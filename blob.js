@@ -131,8 +131,8 @@ class App {
 		this.renderer.setPixelRatio = window.devicePixelRatio;
 		this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 		this.renderer.setClearColor(0xffffff, 1);
-		document.body.appendChild(this.renderer.domElement);
-
+		document.querySelector('main').appendChild(this.renderer.domElement);
+		
 		// scene
 		this.scene = new THREE.Scene();
 
