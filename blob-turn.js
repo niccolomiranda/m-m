@@ -84,7 +84,7 @@ class App {
 		this.renderer = new THREE.WebGLRenderer({ antialias: true });
 		this.renderer.setSize(window.innerWidth, window.innerHeight);
 		this.renderer.setPixelRatio = window.devicePixelRatio;
-		document.body.appendChild(this.renderer.domElement);
+		document.querySelector('main').appendChild(this.renderer.domElement);
 
 		// scene
 		this.scene = new THREE.Scene();
