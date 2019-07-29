@@ -126,45 +126,6 @@ html.is-ready .c-header_title_line {
     transition-duration: .8s
 }
 
-html.is-ready .c-header_title_line:first-child {
-    transition-delay: .1s
-}
-
-html.is-ready .c-header_title_line:nth-child(2) {
-    transition-delay: .2s
-}
-
-html.is-ready .c-header_title_line:nth-child(3) {
-    transition-delay: .3s
-}
-
-html.is-ready .c-header_title_line:nth-child(4) {
-    transition-delay: .4s
-}
-
-.c-header_title_line span {
-    display: inline-block
-}
-
-.c-header_title_line.-version {
-    text-transform: none;
-    font-size: 0
-}
-
-.c-header_heading {
-    padding: 1.875rem 0
-}
-
-.c-header_heading_label {
-    display: block;
-    transition: transform 0s cubic-bezier(.215, .61, .355, 1);
-    transform: translateY(-60px)
-}
-
-html.is-ready .c-header_heading_label {
-    transform: none;
-    transition-duration: .6s
-}
 
 html.is-ready .o-layout_item:nth-child(2) .c-header_heading_label {
     transition-delay: .1s
@@ -174,7 +135,6 @@ html.is-ready .o-layout_item:nth-child(2) .c-header_heading_label {
 html:not(.has-scroll-smooth) .c-fixed {
     top: 0
 }
-
 
 
 html[data-direction=up] .c-choochoo_item.-reverse span {
