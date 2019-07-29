@@ -830,57 +830,12 @@ h6 {
     text-align: left
 }
 
-.o-button:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    transform: scaleY(0);
-    transform-origin: center top;
-    background-color: #fff;
-    transition: transform .3s cubic-bezier(.215, .61, .355, 1)
-}
 
-.o-button:focus,
-.o-button:hover {
-    color: #272727
-}
-
-.o-button:focus:before,
-.o-button:hover:before {
-    transform: scaleY(1);
-    transform-origin: center bottom
-}
-
-.o-button_icon {
-    display: inline-block;
-    vertical-align: middle;
-    width: 3.4375rem;
-    height: 3.4375rem;
-    margin-right: .9375rem
-}
-
-.o-button_icon svg {
-    display: block;
-    width: 100%;
-    height: 100%
-}
-
-.o-button_arrow {
-    position: absolute;
-    top: 50%;
-    right: 2.1875rem;
-    transform: translateY(-50%)
-}
 
 .o-scroll {
     box-sizing: border-box;
     overflow: hidden;
     width: 100vw;
-    background-color: #d4c9c9
 }
 
 .has-scroll-smooth .o-scroll {
@@ -916,73 +871,6 @@ h6 {
     cursor: pointer
 }
 
-.o-title {
-    margin: 0;
-    padding: 2.5rem 0;
-    perspective: 600px;
-    -webkit-perspective: 600px
-}
-
-.o-title_line {
-    display: block;
-    opacity: 0;
-    transform-origin: center top;
-    transform-style: preserve-3d;
-    transform: translateY(100%) rotateX(-80deg);
-    transition: opacity .8s cubic-bezier(.215, .61, .355, 1), transform .8s cubic-bezier(.215, .61, .355, 1);
-    font-size: 0
-}
-
-.o-title.is-inview .o-title_line {
-    transform: none;
-    opacity: 1
-}
-
-.o-title.is-inview .o-title_line:first-child {
-    transition-delay: .4s
-}
-
-.o-title.is-inview .o-title_line:nth-child(2) {
-    transition-delay: .5s
-}
-
-.o-title.is-inview .o-title_line:nth-child(3) {
-    transition-delay: .6s
-}
-
-.o-title.is-inview .o-title_line:nth-child(4) {
-    transition-delay: .7s
-}
-
-.o-title_line span {
-    display: inline-block;
-    min-width: .05em;
-    font-size: 13.5vw
-}
-
-.o-image_wrapper {
-    position: relative;
-    overflow: hidden;
-    background-color: #d4c9c9
-}
-
-.o-image {
-    opacity: .75;
-    mix-blend-mode: multiply
-}
-
-.o-image img {
-    width: 100%;
-    opacity: 0;
-    transform: scale(1.4);
-    transition: opacity 1.2s cubic-bezier(.215, .61, .355, 1), transform 1.2s cubic-bezier(.215, .61, .355, 1)
-}
-
-.o-image.is-inview img {
-    opacity: 1;
-    transform: scale(1);
-    transition-delay: .6s
-}
 
 
 
@@ -1072,43 +960,6 @@ html.is-ready .c-header_logo {
     transition-duration: .6s
 }
 
-.c-fixed_wrapper {
-    position: relative;
-    overflow: hidden;
-    background-color: #d4c9c9
-}
-
-@media (min-width:1000px) {
-    .c-fixed_wrapper {
-        height: 100vh
-    }
-}
-
-@media (max-width:999px) {
-    .c-fixed_wrapper {
-        height: 50vh
-    }
-}
-
-.c-fixed_target {
-    bottom: -100vh
-}
-
-.c-fixed,
-.c-fixed_target {
-    position: absolute;
-    top: -100vh;
-    right: 0;
-    left: 0
-}
-
-.c-fixed {
-    height: 100%;
-    background-size: cover;
-    background-position: 50%;
-    opacity: .75;
-    mix-blend-mode: multiply
-}
 
 html:not(.has-scroll-smooth) .c-fixed {
     top: 0
@@ -1408,16 +1259,6 @@ html:not(.has-scroll-smooth) .c-fixed {
     }
 }
 
-.c-speed-block_bubble {
-    position: absolute;
-    right: 20px;
-    top: 30%;
-    z-index: 1;
-    color: #d4c9c9;
-    padding: 1.5rem 2.5rem;
-    font-size: 1.25rem
-}
-
 .c-speed-block_bubble.-right {
     right: -30px
 }
@@ -1593,45 +1434,7 @@ html:not(.has-scroll-smooth) .c-fixed {
     }
 }
 
-.c-lerp-block_index {
-    vertical-align: middle;
-    color: #d4c9c9;
-    width: 3.75rem;
-    height: 2.8125rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    position: relative;
-    z-index: 1
-}
 
-.c-lerp-block_index:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    background-color: #272727;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: transform .6s cubic-bezier(.17, .67, .3, 1.33)
-}
-
-.c-lerp-block_index.is-inview:before {
-    transform: scale(1);
-    transition-delay: .3s
-}
-
-.c-lerp-block_title {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 0;
-    margin-left: 1.25rem;
-    line-height: 1.1
-}
 
 .c-lerp-block_title.is-inview>span:not([data-scroll]) {
     opacity: 1;
