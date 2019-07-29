@@ -879,13 +879,6 @@
             }),
             n = [],
             o = [];
-        i.on("scroll", function(t) {
-            var e = 360 * t.scroll.y / t.limit;
-            i.el.style.backgroundColor = "hsl(".concat(e, ", 11%, 81%)"), n.forEach(function(t) {
-                t.el.style.backgroundColor = "hsl(".concat(e, ", 11%, 81%)")
-            }), o.forEach(function(t) {
-                t.el.style.color = "hsl(".concat(e, ", 11%, 81%)")
-            }), document.documentElement.setAttribute("data-direction", t.direction)
-        })
+      
     }, 1e3)
 }();
