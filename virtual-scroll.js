@@ -1,4 +1,4 @@
-! function() {
+! function () {
     "use strict";
 
     function s(t, e) {
@@ -20,7 +20,7 @@
         var i = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
             var s = Object.getOwnPropertySymbols(e);
-            t && (s = s.filter(function(t) {
+            t && (s = s.filter(function (t) {
                 return Object.getOwnPropertyDescriptor(e, t).enumerable
             })), i.push.apply(i, s)
         }
@@ -39,27 +39,27 @@
     }
 
     function l(t) {
-        return (l = Object.setPrototypeOf ? Object.getPrototypeOf : function(t) {
+        return (l = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
             return t.__proto__ || Object.getPrototypeOf(t)
         })(t)
     }
 
     function a(t, e) {
-        return (a = Object.setPrototypeOf || function(t, e) {
+        return (a = Object.setPrototypeOf || function (t, e) {
             return t.__proto__ = e, t
         })(t, e)
     }
 
     function r(t, e) {
-        return !e || "object" != typeof e && "function" != typeof e ? function(t) {
+        return !e || "object" != typeof e && "function" != typeof e ? function (t) {
             if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
             return t
         }(t) : e
     }
 
     function c(t, e, i) {
-        return (c = "undefined" != typeof Reflect && Reflect.get ? Reflect.get : function(t, e, i) {
-            var s = function(t, e) {
+        return (c = "undefined" != typeof Reflect && Reflect.get ? Reflect.get : function (t, e, i) {
+            var s = function (t, e) {
                 for (; !Object.prototype.hasOwnProperty.call(t, e) && null !== (t = l(t)););
                 return t
             }(t, e);
@@ -88,7 +88,7 @@
             getSpeed: !1,
             getDirection: !1
         },
-        u = function() {
+        u = function () {
             function e() {
                 var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : {};
                 s(this, e), window.scrollTo(0, 0), Object.assign(this, h, t), this.namespace = "locomotive", this.html = document.documentElement, this.windowHeight = window.innerHeight, this.windowMiddle = this.windowHeight / 2, this.els = [], this.hasScrollTicking = !1, this.checkScroll = this.checkScroll.bind(this), this.checkResize = this.checkResize.bind(this), this.instance = {
@@ -101,57 +101,57 @@
             }
             return o(e, [{
                 key: "init",
-                value: function() {
+                value: function () {
                     this.initEvents()
                 }
             }, {
                 key: "checkScroll",
-                value: function() {
+                value: function () {
                     this.dispatchScroll()
                 }
             }, {
                 key: "checkResize",
-                value: function() {}
+                value: function () {}
             }, {
                 key: "initEvents",
-                value: function() {
+                value: function () {
                     var e = this;
-                    this.scrollToEls = this.el.querySelectorAll("[data-".concat(this.name, "-to]")), this.setScrollTo = this.setScrollTo.bind(this), this.scrollToEls.forEach(function(t) {
+                    this.scrollToEls = this.el.querySelectorAll("[data-".concat(this.name, "-to]")), this.setScrollTo = this.setScrollTo.bind(this), this.scrollToEls.forEach(function (t) {
                         t.addEventListener("click", e.setScrollTo, !1)
                     })
                 }
             }, {
                 key: "setScrollTo",
-                value: function(t) {
+                value: function (t) {
                     t.preventDefault(), this.scrollTo(t.currentTarget.getAttribute("data-".concat(this.name, "-href")) || t.currentTarget.getAttribute("href"), t.currentTarget.getAttribute("data-".concat(this.name, "-offset")))
                 }
             }, {
                 key: "addElements",
-                value: function() {}
+                value: function () {}
             }, {
                 key: "detectElements",
-                value: function() {
+                value: function () {
                     var i = this,
                         s = this.instance.scroll.y,
                         n = s + this.windowHeight;
-                    this.els.forEach(function(t, e) {
+                    this.els.forEach(function (t, e) {
                         t.inView || n >= t.top && s < t.bottom && i.setInView(t, e), t.inView && (n < t.top || s > t.bottom) && i.setOutOfView(t, e)
                     }), this.hasScrollTicking = !1
                 }
             }, {
                 key: "setInView",
-                value: function(t, e) {
+                value: function (t, e) {
                     this.els[e].inView = !0, t.el.classList.add(t.class), t.call && this.dispatchCall(t, "enter"), t.repeat || !1 !== t.speed || t.sticky || this.els.splice(e, 1)
                 }
             }, {
                 key: "setOutOfView",
-                value: function(t, e) {
+                value: function (t, e) {
                     (t.repeat || void 0 !== t.speed) && (this.els[e].inView = !1), t.call && this.dispatchCall(t, "exit"), t.repeat && t.el.classList.remove(t.class)
                 }
             }, {
                 key: "dispatchCall",
-                value: function(t, e) {
-                    this.callWay = e, this.callValue = t.call.split(",").map(function(t) {
+                value: function (t, e) {
+                    this.callWay = e, this.callValue = t.call.split(",").map(function (t) {
                         return t.trim()
                     }), this.callObj = t, 1 == this.callValue.length && (this.callValue = this.callValue[0]);
                     var i = new Event(this.namespace + "call");
@@ -159,15 +159,15 @@
                 }
             }, {
                 key: "dispatchScroll",
-                value: function() {
+                value: function () {
                     var t = new Event(this.namespace + "scroll");
                     window.dispatchEvent(t)
                 }
             }, {
                 key: "setEvents",
-                value: function(t, e) {
+                value: function (t, e) {
                     var i = this;
-                    window.addEventListener(this.namespace + t, function() {
+                    window.addEventListener(this.namespace + t, function () {
                         switch (t) {
                             case "scroll":
                                 return e(i.instance);
@@ -180,13 +180,13 @@
                 }
             }, {
                 key: "startScroll",
-                value: function() {}
+                value: function () {}
             }, {
                 key: "stopScroll",
-                value: function() {}
+                value: function () {}
             }, {
                 key: "setScroll",
-                value: function(t, e) {
+                value: function (t, e) {
                     this.instance.scroll = {
                         x: 0,
                         y: 0
@@ -194,45 +194,45 @@
                 }
             }, {
                 key: "destroy",
-                value: function() {
+                value: function () {
                     var e = this;
-                    window.removeEventListener("resize", this.checkResize, !1), this.scrollToEls.forEach(function(t) {
+                    window.removeEventListener("resize", this.checkResize, !1), this.scrollToEls.forEach(function (t) {
                         t.removeEventListener("click", e.setScrollTo, !1)
                     })
                 }
             }]), e
         }(),
-        t = function(t) {
+        t = function (t) {
             function i() {
                 var t, e = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : {};
                 return s(this, i), t = r(this, l(i).call(this, e)), window.addEventListener("scroll", t.checkScroll, !1), t
             }
             return e(i, u), o(i, [{
                 key: "init",
-                value: function() {
+                value: function () {
                     this.instance.scroll.y = window.scrollY, this.addElements(), this.detectElements(), c(l(i.prototype), "init", this).call(this)
                 }
             }, {
                 key: "checkScroll",
-                value: function() {
+                value: function () {
                     var t = this;
-                    c(l(i.prototype), "checkScroll", this).call(this), this.els.length && (this.instance.scroll.y = window.scrollY, this.hasScrollTicking || (requestAnimationFrame(function() {
+                    c(l(i.prototype), "checkScroll", this).call(this), this.els.length && (this.instance.scroll.y = window.scrollY, this.hasScrollTicking || (requestAnimationFrame(function () {
                         t.detectElements()
                     }), this.hasScrollTicking = !0))
                 }
             }, {
                 key: "checkResize",
-                value: function() {
+                value: function () {
                     var t = this;
-                    this.els.length && (this.windowHeight = window.innerHeight, this.hasScrollTicking || (requestAnimationFrame(function() {
+                    this.els.length && (this.windowHeight = window.innerHeight, this.hasScrollTicking || (requestAnimationFrame(function () {
                         t.updateElements()
                     }), this.hasScrollTicking = !0))
                 }
             }, {
                 key: "addElements",
-                value: function() {
+                value: function () {
                     var r = this;
-                    this.el.querySelectorAll("[data-" + this.name + "]").forEach(function(t, e) {
+                    this.el.querySelectorAll("[data-" + this.name + "]").forEach(function (t, e) {
                         var i = t.dataset[r.name + "Class"] || r.class,
                             s = t.getBoundingClientRect().top + r.instance.scroll.y,
                             n = s + t.offsetHeight,
@@ -253,9 +253,9 @@
                 }
             }, {
                 key: "updateElements",
-                value: function() {
+                value: function () {
                     var n = this;
-                    this.els.forEach(function(t, e) {
+                    this.els.forEach(function (t, e) {
                         var i = t.el.getBoundingClientRect().top + n.instance.scroll.y,
                             s = i + t.el.offsetHeight;
                         n.els[e].top = i + t.offset, n.els[e].bottom = s
@@ -263,7 +263,7 @@
                 }
             }, {
                 key: "scrollTo",
-                value: function(t, e) {
+                value: function (t, e) {
                     var i, s = e ? parseInt(e) : 0;
                     if ("string" == typeof t)
                         if ("top" === t) i = this.html;
@@ -274,19 +274,20 @@
                                 inline: "nearest"
                             });
                             i = document.querySelectorAll(t)[0]
-                        } else t.target || (i = t);
+                        }
+                    else t.target || (i = t);
                     i && (s = i.getBoundingClientRect().top + s), i.scrollIntoView({
                         behavior: "smooth"
                     })
                 }
             }, {
                 key: "update",
-                value: function() {
+                value: function () {
                     this.updateElements()
                 }
             }, {
                 key: "destroy",
-                value: function() {
+                value: function () {
                     c(l(i.prototype), "destroy", this).call(this), window.removeEventListener("scroll", this.checkScroll, !1)
                 }
             }]), i
@@ -294,24 +295,24 @@
         d = Object.getOwnPropertySymbols,
         f = Object.prototype.hasOwnProperty,
         p = Object.prototype.propertyIsEnumerable;
-    var y = function() {
+    var y = function () {
         try {
             if (!Object.assign) return !1;
             var t = new String("abc");
             if (t[5] = "de", "5" === Object.getOwnPropertyNames(t)[0]) return !1;
             for (var e = {}, i = 0; i < 10; i++) e["_" + String.fromCharCode(i)] = i;
-            if ("0123456789" !== Object.getOwnPropertyNames(e).map(function(t) {
+            if ("0123456789" !== Object.getOwnPropertyNames(e).map(function (t) {
                     return e[t]
                 }).join("")) return !1;
             var s = {};
-            return "abcdefghijklmnopqrst".split("").forEach(function(t) {
+            return "abcdefghijklmnopqrst".split("").forEach(function (t) {
                 s[t] = t
             }), "abcdefghijklmnopqrst" === Object.keys(Object.assign({}, s)).join("")
         } catch (t) {
             return !1
         }
-    }() ? Object.assign : function(t, e) {
-        for (var i, s, n = function(t) {
+    }() ? Object.assign : function (t, e) {
+        for (var i, s, n = function (t) {
                 if (null == t) throw new TypeError("Object.assign cannot be called with null or undefined");
                 return Object(t)
             }(t), o = 1; o < arguments.length; o++) {
@@ -326,14 +327,14 @@
 
     function m() {}
     m.prototype = {
-        on: function(t, e, i) {
+        on: function (t, e, i) {
             var s = this.e || (this.e = {});
             return (s[t] || (s[t] = [])).push({
                 fn: e,
                 ctx: i
             }), this
         },
-        once: function(t, e, i) {
+        once: function (t, e, i) {
             var s = this;
 
             function n() {
@@ -341,11 +342,11 @@
             }
             return n._ = e, this.on(t, n, i)
         },
-        emit: function(t) {
+        emit: function (t) {
             for (var e = [].slice.call(arguments, 1), i = ((this.e || (this.e = {}))[t] || []).slice(), s = 0, n = i.length; s < n; s++) i[s].fn.apply(i[s].ctx, e);
             return this
         },
-        off: function(t, e) {
+        off: function (t, e) {
             var i = this.e || (this.e = {}),
                 s = i[t],
                 n = [];
@@ -356,37 +357,37 @@
     };
     var v = m,
         g = "undefined" != typeof globalThis ? globalThis : "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {};
-    var w, b = (function(t, e) {
-            (function() {
-                (null !== e ? e : this).Lethargy = function() {
+    var w, b = (function (t, e) {
+            (function () {
+                (null !== e ? e : this).Lethargy = function () {
                     function t(t, e, i, s) {
-                        this.stability = null != t ? Math.abs(t) : 8, this.sensitivity = null != e ? 1 + Math.abs(e) : 100, this.tolerance = null != i ? 1 + Math.abs(i) : 1.1, this.delay = null != s ? s : 150, this.lastUpDeltas = function() {
+                        this.stability = null != t ? Math.abs(t) : 8, this.sensitivity = null != e ? 1 + Math.abs(e) : 100, this.tolerance = null != i ? 1 + Math.abs(i) : 1.1, this.delay = null != s ? s : 150, this.lastUpDeltas = function () {
                             var t, e, i;
                             for (i = [], t = 1, e = 2 * this.stability; 1 <= e ? t <= e : e <= t; 1 <= e ? t++ : t--) i.push(null);
                             return i
-                        }.call(this), this.lastDownDeltas = function() {
+                        }.call(this), this.lastDownDeltas = function () {
                             var t, e, i;
                             for (i = [], t = 1, e = 2 * this.stability; 1 <= e ? t <= e : e <= t; 1 <= e ? t++ : t--) i.push(null);
                             return i
-                        }.call(this), this.deltasTimestamp = function() {
+                        }.call(this), this.deltasTimestamp = function () {
                             var t, e, i;
                             for (i = [], t = 1, e = 2 * this.stability; 1 <= e ? t <= e : e <= t; 1 <= e ? t++ : t--) i.push(null);
                             return i
                         }.call(this)
                     }
-                    return t.prototype.check = function(t) {
+                    return t.prototype.check = function (t) {
                         var e;
                         return null != (t = t.originalEvent || t).wheelDelta ? e = t.wheelDelta : null != t.deltaY ? e = -40 * t.deltaY : null == t.detail && 0 !== t.detail || (e = -40 * t.detail), this.deltasTimestamp.push(Date.now()), this.deltasTimestamp.shift(), 0 < e ? (this.lastUpDeltas.push(e), this.lastUpDeltas.shift(), this.isInertia(1)) : (this.lastDownDeltas.push(e), this.lastDownDeltas.shift(), this.isInertia(-1))
-                    }, t.prototype.isInertia = function(t) {
+                    }, t.prototype.isInertia = function (t) {
                         var e, i, s, n, o, l, a;
-                        return null === (e = -1 === t ? this.lastDownDeltas : this.lastUpDeltas)[0] ? t : !(this.deltasTimestamp[2 * this.stability - 2] + this.delay > Date.now() && e[0] === e[2 * this.stability - 1]) && (s = e.slice(0, this.stability), i = e.slice(this.stability, 2 * this.stability), a = s.reduce(function(t, e) {
+                        return null === (e = -1 === t ? this.lastDownDeltas : this.lastUpDeltas)[0] ? t : !(this.deltasTimestamp[2 * this.stability - 2] + this.delay > Date.now() && e[0] === e[2 * this.stability - 1]) && (s = e.slice(0, this.stability), i = e.slice(this.stability, 2 * this.stability), a = s.reduce(function (t, e) {
                             return t + e
-                        }), o = i.reduce(function(t, e) {
+                        }), o = i.reduce(function (t, e) {
                             return t + e
                         }), l = a / s.length, n = o / i.length, Math.abs(l) < Math.abs(n * this.tolerance) && this.sensitivity < Math.abs(n) && t)
-                    }, t.prototype.showLastUpDeltas = function() {
+                    }, t.prototype.showLastUpDeltas = function () {
                         return this.lastUpDeltas
-                    }, t.prototype.showLastDownDeltas = function() {
+                    }, t.prototype.showLastDownDeltas = function () {
                         return this.lastDownDeltas
                     }, t
                 }()
@@ -407,7 +408,7 @@
         T = Object.prototype.hasOwnProperty;
 
     function E(t, e) {
-        return function() {
+        return function () {
             return t.apply(e, arguments)
         }
     }
@@ -421,7 +422,7 @@
         x = 32;
 
     function H(t) {
-        ! function(t) {
+        ! function (t) {
             if (!t) return console.warn("bindAll requires at least one argument.");
             var e = Array.prototype.slice.call(arguments, 1);
             if (0 === e.length)
@@ -463,7 +464,7 @@
             return n ? parseFloat(n[1].split(", ")[13]) : (n = s.match(/^matrix\((.+)\)$/), e.x = n ? parseFloat(n[1].split(", ")[4]) : 0, e.y = n ? parseFloat(n[1].split(", ")[5]) : 0, e)
         }
     }
-    H.prototype._notify = function(t) {
+    H.prototype._notify = function (t) {
         var e = this._event;
         e.x += e.deltaX, e.y += e.deltaY, this._emitter.emit(D, {
             x: e.x,
@@ -472,27 +473,27 @@
             deltaY: e.deltaY,
             originalEvent: t
         })
-    }, H.prototype._onWheel = function(t) {
+    }, H.prototype._onWheel = function (t) {
         var e = this.options;
         if (!this._lethargy || !1 !== this._lethargy.check(t)) {
             var i = this._event;
             i.deltaX = t.wheelDeltaX || -1 * t.deltaX, i.deltaY = t.wheelDeltaY || -1 * t.deltaY, S.isFirefox && 1 == t.deltaMode && (i.deltaX *= e.firefoxMultiplier, i.deltaY *= e.firefoxMultiplier), i.deltaX *= e.mouseMultiplier, i.deltaY *= e.mouseMultiplier, this._notify(t)
         }
-    }, H.prototype._onMouseWheel = function(t) {
+    }, H.prototype._onMouseWheel = function (t) {
         if (!this.options.limitInertia || !1 !== this._lethargy.check(t)) {
             var e = this._event;
             e.deltaX = t.wheelDeltaX ? t.wheelDeltaX : 0, e.deltaY = t.wheelDeltaY ? t.wheelDeltaY : t.wheelDelta, this._notify(t)
         }
-    }, H.prototype._onTouchStart = function(t) {
+    }, H.prototype._onTouchStart = function (t) {
         var e = t.targetTouches ? t.targetTouches[0] : t;
         this.touchStartX = e.pageX, this.touchStartY = e.pageY
-    }, H.prototype._onTouchMove = function(t) {
+    }, H.prototype._onTouchMove = function (t) {
         var e = this.options;
         e.preventTouch && !t.target.classList.contains(e.unpreventTouchClass) && t.preventDefault();
         var i = this._event,
             s = t.targetTouches ? t.targetTouches[0] : t;
         i.deltaX = (s.pageX - this.touchStartX) * e.touchMultiplier, i.deltaY = (s.pageY - this.touchStartY) * e.touchMultiplier, this.touchStartX = s.pageX, this.touchStartY = s.pageY, this._notify(t)
-    }, H.prototype._onKeyDown = function(t) {
+    }, H.prototype._onKeyDown = function (t) {
         var e = this._event;
         e.deltaX = e.deltaY = 0;
         var i = window.innerHeight - 40;
@@ -515,37 +516,37 @@
                 return
         }
         this._notify(t)
-    }, H.prototype._bind = function() {
+    }, H.prototype._bind = function () {
         S.hasWheelEvent && this.el.addEventListener("wheel", this._onWheel, this.listenerOptions), S.hasMouseWheelEvent && this.el.addEventListener("mousewheel", this._onMouseWheel, this.listenerOptions), S.hasTouch && this.options.useTouch && (this.el.addEventListener("touchstart", this._onTouchStart, this.listenerOptions), this.el.addEventListener("touchmove", this._onTouchMove, this.listenerOptions)), S.hasPointer && S.hasTouchWin && (this.bodyTouchAction = document.body.style.msTouchAction, document.body.style.msTouchAction = "none", this.el.addEventListener("MSPointerDown", this._onTouchStart, !0), this.el.addEventListener("MSPointerMove", this._onTouchMove, !0)), S.hasKeyDown && this.options.useKeyboard && document.addEventListener("keydown", this._onKeyDown)
-    }, H.prototype._unbind = function() {
+    }, H.prototype._unbind = function () {
         S.hasWheelEvent && this.el.removeEventListener("wheel", this._onWheel), S.hasMouseWheelEvent && this.el.removeEventListener("mousewheel", this._onMouseWheel), S.hasTouch && (this.el.removeEventListener("touchstart", this._onTouchStart), this.el.removeEventListener("touchmove", this._onTouchMove)), S.hasPointer && S.hasTouchWin && (document.body.style.msTouchAction = this.bodyTouchAction, this.el.removeEventListener("MSPointerDown", this._onTouchStart, !0), this.el.removeEventListener("MSPointerMove", this._onTouchMove, !0)), S.hasKeyDown && this.options.useKeyboard && document.removeEventListener("keydown", this._onKeyDown)
-    }, H.prototype.on = function(t, e) {
+    }, H.prototype.on = function (t, e) {
         this._emitter.on(D, t, e);
         var i = this._emitter.e;
         i && i[D] && 1 === i[D].length && this._bind()
-    }, H.prototype.off = function(t, e) {
+    }, H.prototype.off = function (t, e) {
         this._emitter.off(D, t, e);
         var i = this._emitter.e;
         (!i[D] || i[D].length <= 0) && this._unbind()
-    }, H.prototype.reset = function() {
+    }, H.prototype.reset = function () {
         var t = this._event;
         t.x = 0, t.y = 0
-    }, H.prototype.destroy = function() {
+    }, H.prototype.destroy = function () {
         this._emitter.off(), this._unbind()
     };
-    var Y = function(t) {
+    var Y = function (t) {
             function n() {
                 var t, e = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : {};
                 return s(this, n), (t = r(this, l(n).call(this, e))).inertia = .1 * t.inertia, t.isScrolling = !1, t.isDraggingScrollbar = !1, t.isTicking = !1, t.hasScrollTicking = !1, t.parallaxElements = [], t.inertiaRatio = 1, t.stop = !1, t
             }
             return e(n, u), o(n, [{
                 key: "init",
-                value: function() {
+                value: function () {
                     var e = this;
-                    this.html.classList.add(this.smoothClass), this.instance = function(n) {
+                    this.html.classList.add(this.smoothClass), this.instance = function (n) {
                         for (var t = 1; t < arguments.length; t++) {
                             var o = null != arguments[t] ? arguments[t] : {};
-                            t % 2 ? i(o, !0).forEach(function(t) {
+                            t % 2 ? i(o, !0).forEach(function (t) {
                                 var e, i, s;
                                 e = n, s = o[i = t], i in e ? Object.defineProperty(e, i, {
                                     value: s,
@@ -553,7 +554,7 @@
                                     configurable: !0,
                                     writable: !0
                                 }) : e[i] = s
-                            }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(n, Object.getOwnPropertyDescriptors(o)) : i(o).forEach(function(t) {
+                            }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(n, Object.getOwnPropertyDescriptors(o)) : i(o).forEach(function (t) {
                                 Object.defineProperty(n, t, Object.getOwnPropertyDescriptor(o, t))
                             })
                         }
@@ -567,33 +568,33 @@
                         mouseMultiplier: -1 < navigator.platform.indexOf("Win") ? 1 : .4,
                         touchMultiplier: 4,
                         firefoxMultiplier: 30
-                    }), this.vs.on(function(t) {
-                        e.stop || (e.isTicking || e.isDraggingScrollbar || (requestAnimationFrame(function() {
+                    }), this.vs.on(function (t) {
+                        e.stop || (e.isTicking || e.isDraggingScrollbar || (requestAnimationFrame(function () {
                             e.isScrolling || e.startScrolling(), e.updateDelta(t)
                         }), e.isTicking = !0), e.isTicking = !1)
                     }), this.setScrollLimit(), this.initScrollBar(), this.addSections(), this.addElements(), this.detectElements(), this.transformElements(!0), c(l(n.prototype), "init", this).call(this)
                 }
             }, {
                 key: "setScrollLimit",
-                value: function() {
+                value: function () {
                     this.instance.limit = this.el.offsetHeight - this.windowHeight
                 }
             }, {
                 key: "startScrolling",
-                value: function() {
+                value: function () {
                     this.isScrolling = !0, this.checkScroll(), this.html.classList.add(this.scrollingClass)
                 }
             }, {
                 key: "stopScrolling",
-                value: function() {
+                value: function () {
                     this.isScrolling = !1, this.inertiaRatio = 1, this.instance.scroll.y = Math.round(this.instance.scroll.y), this.html.classList.remove(this.scrollingClass)
                 }
             }, {
                 key: "checkScroll",
-                value: function() {
+                value: function () {
                     var t = this;
                     if (this.isScrolling || this.isDraggingScrollbar) {
-                        this.hasScrollTicking || (requestAnimationFrame(function() {
+                        this.hasScrollTicking || (requestAnimationFrame(function () {
                             return t.checkScroll()
                         }), this.hasScrollTicking = !0);
                         var e = Math.abs(this.instance.delta.y - this.instance.scroll.y);
@@ -606,71 +607,71 @@
                 }
             }, {
                 key: "checkResize",
-                value: function() {
+                value: function () {
                     this.windowHeight = window.innerHeight, this.windowMiddle = this.windowHeight / 2, this.update()
                 }
             }, {
                 key: "updateDelta",
-                value: function(t) {
+                value: function (t) {
                     this.instance.delta.y -= t.deltaY, this.instance.delta.y < 0 && (this.instance.delta.y = 0), this.instance.delta.y > this.instance.limit && (this.instance.delta.y = this.instance.limit)
                 }
             }, {
                 key: "updateScroll",
-                value: function(t) {
+                value: function (t) {
                     this.isScrolling || this.isDraggingScrollbar ? this.instance.scroll.y = B(this.instance.scroll.y, this.instance.delta.y, this.inertia * this.inertiaRatio) : this.instance.scroll.y = this.instance.delta.y
                 }
             }, {
                 key: "addDirection",
-                value: function() {
+                value: function () {
                     this.instance.delta.y > this.instance.scroll.y ? "down" !== this.instance.direction && (this.instance.direction = "down") : this.instance.delta.y < this.instance.scroll.y && "up" !== this.instance.direction && (this.instance.direction = "up")
                 }
             }, {
                 key: "addSpeed",
-                value: function() {
+                value: function () {
                     this.instance.delta.y != this.instance.scroll.y ? this.instance.speed = (this.instance.delta.y - this.instance.scroll.y) / (Date.now() - this.timestamp) : this.instance.speed = 0
                 }
             }, {
                 key: "initScrollBar",
-                value: function() {
+                value: function () {
                     this.scrollbar = document.createElement("span"), this.scrollbarThumb = document.createElement("span"), this.scrollbar.classList.add("".concat(this.scrollbarClass)), this.scrollbarThumb.classList.add("".concat(this.scrollbarClass, "_thumb")), this.scrollbar.append(this.scrollbarThumb), document.body.append(this.scrollbar), this.scrollbarThumb.style.height = "".concat(window.innerHeight * window.innerHeight / (this.instance.limit + window.innerHeight), "px"), this.scrollBarLimit = window.innerHeight - this.scrollbarThumb.getBoundingClientRect().height, this.getScrollBar = this.getScrollBar.bind(this), this.releaseScrollBar = this.releaseScrollBar.bind(this), this.moveScrollBar = this.moveScrollBar.bind(this), this.scrollbarThumb.addEventListener("mousedown", this.getScrollBar), window.addEventListener("mouseup", this.releaseScrollBar), window.addEventListener("mousemove", this.moveScrollBar)
                 }
             }, {
                 key: "reinitScrollBar",
-                value: function() {
+                value: function () {
                     this.scrollbarThumb.style.height = "".concat(window.innerHeight * window.innerHeight / this.instance.limit, "px"), this.scrollBarLimit = window.innerHeight - this.scrollbarThumb.getBoundingClientRect().height
                 }
             }, {
                 key: "destroyScrollBar",
-                value: function() {
+                value: function () {
                     this.scrollbarThumb.removeEventListener("mousedown", this.getScrollBar), window.removeEventListener("mouseup", this.releaseScrollBar), window.removeEventListener("mousemove", this.moveScrollBar), this.scrollbar.remove()
                 }
             }, {
                 key: "getScrollBar",
-                value: function(t) {
+                value: function (t) {
                     this.isDraggingScrollbar = !0, this.checkScroll(), this.html.classList.remove(this.scrollingClass), this.html.classList.add(this.draggingClass)
                 }
             }, {
                 key: "releaseScrollBar",
-                value: function(t) {
+                value: function (t) {
                     this.isDraggingScrollbar = !1, this.html.classList.add(this.scrollingClass), this.html.classList.remove(this.draggingClass)
                 }
             }, {
                 key: "moveScrollBar",
-                value: function(e) {
+                value: function (e) {
                     var i = this;
-                    !this.isTicking && this.isDraggingScrollbar && (requestAnimationFrame(function() {
+                    !this.isTicking && this.isDraggingScrollbar && (requestAnimationFrame(function () {
                         var t = 100 * e.clientY / window.innerHeight * i.instance.limit / 100;
                         0 < t && t < i.instance.limit && (i.instance.delta.y = t)
                     }), this.isTicking = !0), this.isTicking = !1
                 }
             }, {
                 key: "addElements",
-                value: function() {
+                value: function () {
                     var w = this;
                     this.els = [], this.parallaxElements = [];
                     var b = 0;
-                    this.sections.forEach(function(t, g) {
-                        w.sections[g].el.querySelectorAll("[data-".concat(w.name, "]")).forEach(function(t, e) {
+                    this.sections.forEach(function (t, g) {
+                        w.sections[g].el.querySelectorAll("[data-".concat(w.name, "]")).forEach(function (t, e) {
                             var i, s, n = t.dataset[w.name + "Class"] || w.class,
                                 o = t.dataset[w.name + "Repeat"],
                                 l = t.dataset[w.name + "Call"],
@@ -712,11 +713,11 @@
                 }
             }, {
                 key: "addSections",
-                value: function() {
+                value: function () {
                     var a = this;
                     this.sections = [];
                     var t = this.el.querySelectorAll("[data-".concat(this.name, "-section]"));
-                    0 === t.length && (t = [this.el]), t.forEach(function(t, e) {
+                    0 === t.length && (t = [this.el]), t.forEach(function (t, e) {
                         var i = t.getBoundingClientRect().top - 1.5 * window.innerHeight - P(t).y,
                             s = i + t.getBoundingClientRect().height + 2 * window.innerHeight,
                             n = "string" == typeof t.dataset[a.name + "Persistent"],
@@ -734,7 +735,7 @@
                 }
             }, {
                 key: "transform",
-                value: function(t, e, i, s) {
+                value: function (t, e, i, s) {
                     var n;
                     if (s) {
                         var o = P(t),
@@ -746,11 +747,11 @@
                 }
             }, {
                 key: "transformElements",
-                value: function(s) {
+                value: function (s) {
                     var n = this,
                         o = this.instance.scroll.y + this.windowHeight,
                         l = this.instance.scroll.y + this.windowMiddle;
-                    this.parallaxElements.forEach(function(t, e) {
+                    this.parallaxElements.forEach(function (t, e) {
                         var i = !1;
                         if (s && (i = 0), t.inView) switch (t.position) {
                             case "top":
@@ -767,16 +768,16 @@
                 }
             }, {
                 key: "scrollTo",
-                value: function(t, e) {
+                value: function (t, e) {
                     var i, s = this,
                         n = e ? parseInt(e) : 0;
                     if ("string" == typeof t ? "top" === t ? n = 0 : "bottom" === t ? n = this.instance.limit : i = document.querySelectorAll(t)[0] : t.target || (i = t), i) {
                         var o = i.getBoundingClientRect().top + this.instance.scroll.y,
-                            l = function(t) {
+                            l = function (t) {
                                 for (var e = []; t && t !== document; t = t.parentNode) e.push(t);
                                 return e
-                            }(i).find(function(e) {
-                                return s.sections.find(function(t) {
+                            }(i).find(function (e) {
+                                return s.sections.find(function (t) {
                                     return t.element == e
                                 })
                             }),
@@ -787,22 +788,22 @@
                 }
             }, {
                 key: "update",
-                value: function() {
+                value: function () {
                     this.setScrollLimit(), this.addSections(), this.addElements(), this.detectElements(), this.updateScroll(), this.transformElements(!0)
                 }
             }, {
                 key: "startScroll",
-                value: function() {
+                value: function () {
                     this.stop = !1
                 }
             }, {
                 key: "stopScroll",
-                value: function() {
+                value: function () {
                     this.stop = !0
                 }
             }, {
                 key: "setScroll",
-                value: function(t, e) {
+                value: function (t, e) {
                     this.instance = {
                         scroll: {
                             x: t,
@@ -816,69 +817,59 @@
                 }
             }, {
                 key: "destroy",
-                value: function() {
+                value: function () {
                     c(l(n.prototype), "destroy", this).call(this), this.stopScrolling(), this.html.classList.remove(this.smoothClass), this.vs.destroy(), this.destroyScrollBar()
                 }
             }]), n
         }(),
-        R = function() {
+        R = function () {
             function e() {
                 var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : {};
                 s(this, e), this.options = t, Object.assign(this, h, t), this.init()
             }
             return o(e, [{
                 key: "init",
-                value: function() {
+                value: function () {
                     this.smoothMobile || (this.isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)), !0 !== this.smooth || this.isMobile ? this.scroll = new t(this.options) : this.scroll = new Y(this.options), this.scroll.init(), window.location.hash && this.scroll.scrollTo(window.location.hash)
                 }
             }, {
                 key: "update",
-                value: function() {
+                value: function () {
                     this.scroll.update()
                 }
             }, {
                 key: "start",
-                value: function() {
+                value: function () {
                     this.scroll.startScroll()
                 }
             }, {
                 key: "stop",
-                value: function() {
+                value: function () {
                     this.scroll.stopScroll()
                 }
             }, {
                 key: "scrollTo",
-                value: function(t, e) {
+                value: function (t, e) {
                     this.scroll.scrollTo(t, e)
                 }
             }, {
                 key: "setScroll",
-                value: function(t, e) {
+                value: function (t, e) {
                     this.scroll.setScroll(t, e)
                 }
             }, {
                 key: "on",
-                value: function(t, e) {
+                value: function (t, e) {
                     this.scroll.setEvents(t, e)
                 }
             }, {
                 key: "destroy",
-                value: function() {
+                value: function () {
                     this.scroll.destroy()
                 }
             }]), e
         }();
-    document.documentElement.classList.add("is-loaded"), document.documentElement.classList.remove("is-loading"), setTimeout(function() {
+    document.documentElement.classList.add("is-loaded"), document.documentElement.classList.remove("is-loading"), setTimeout(function () {
         document.documentElement.classList.add("is-ready")
-    }, 300), setTimeout(function() {
-        var i = new R({
-                el: document.querySelector("#js-scroll"),
-                smooth: !0,
-                getSpeed: !0,
-                getDirection: !0
-            }),
-            n = [],
-            o = [];
-      
-    }, 1e3)
+    }, 300), setTimeout(function () {}, 1e3)
 }();
