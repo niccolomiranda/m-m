@@ -36,58 +36,6 @@ html.has-scroll-dragging {
     overflow: hidden
 }
 
-
-
-.o-container {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 95rem
-}
-
-@media (max-width:699px) {
-    .o-container {
-        padding-right: 20px;
-        padding-left: 20px
-    }
-}
-
-@media (min-width:700px) {
-    .o-container {
-        padding-right: 2.5rem;
-        padding-left: 2.5rem
-    }
-}
-
-
-
-
-.o-checkbox-label:after,
-.o-checkbox-label:before,
-.o-radio-label:after,
-.o-radio-label:before {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    display: inline-block;
-    margin-top: -.5625rem;
-    padding: 0;
-    width: 1.125rem;
-    height: 1.125rem;
-    content: ""
-}
-
-
-
-.o-scroll {
-    box-sizing: border-box;
-    overflow: hidden;
-    width: 100vw;
-}
-
-.has-scroll-smooth .o-scroll {
-    position: relative
-}
-
 .c-scrollbar {
     width: 10px;
     position: absolute;
@@ -118,28 +66,6 @@ html.has-scroll-dragging {
 }
 
 
-
-
-html.is-ready .c-header_title_line {
-    transform: none;
-    opacity: 1;
-    transition-duration: .8s
-}
-
-
-html.is-ready .o-layout_item:nth-child(2) .c-header_heading_label {
-    transition-delay: .1s
-}
-
-
-html:not(.has-scroll-smooth) .c-fixed {
-    top: 0
-}
-
-
-html[data-direction=up] .c-choochoo_item.-reverse span {
-    transform: rotateY(0deg)
-}
 
 
 [hidden][aria-hidden=false] {
