@@ -53,41 +53,18 @@ class App {
 		);
 		this.camera.position.set(0, 0, 7);
 
-		// controls
-		this.controls = new THREE.OrbitControls(
-			this.camera,
-			document.querySelector("canvas")
-		);
-		this.controls.enabled = false;
-		this.controls.enablePan = false;
-
-		// ambient light
-		// this.scene.add(new THREE.AmbientLight(0x222222));
-
 		this.lightTop = new THREE.DirectionalLight(0xe6c9f7, 0.55);
 		this.lightTop.position.set(0, 500, 300);
-		// lightTop.castShadow = true;
 		this.scene.add(this.lightTop);
 
 		this.lightBottom = new THREE.DirectionalLight(0x36e8e8, 0.2);
 		this.lightBottom.position.set(0, -500, 400);
-		// this.lightBottom.castShadow = true;
 		this.scene.add(this.lightBottom);
 
 		let ambientLight = new THREE.AmbientLight(0x7d8cdb);
 		this.scene.add(ambientLight);
 
-		// axes
-		// this.scene.add(new THREE.AxesHelper(20));
-
 		this.addBlob();
-
-		this.load().then(assets => {
-			this.addPostProcessing(assets);
-			this.isPostProcessingEnabled = false;
-
-			this.addGUI();
-		});
 
 		//animation loop
 		this.renderer.setAnimationLoop(this.render.bind(this));
@@ -208,19 +185,6 @@ class App {
 			stencilBuffer: false,
 			depthBuffer: false
 		});
-
-		//RESET VISCOSITY
-
-		// setTimeout(()=>{
-		// 	this.heightmapVariable.material.uniforms["viscosityConstant"] = {
-		// 	value: 0.0
-		// 	};
-		// }, 500)
-		// setTimeout(() => {
-		// 	this.heightmapVariable.material.uniforms["viscosityConstant"] = {
-		// 		value: effectController.viscosity
-		// 	};
-		// }, 1000);
 	}
 
 	fillTexture(texture) {
@@ -300,9 +264,7 @@ class App {
 			).texture;
 		}
 
-		Boolean(this.isPostProcessingEnabled)
-			? this.composer.render(this.clock.getDelta())
-			: this.renderer.render(this.scene, this.camera);
+		this.renderer.render(this.scene, this.camera);
 	}
 
 	valuesChanger() {
@@ -344,14 +306,6 @@ class App {
 			this.mouseMoved = true;
 			this.mouse.x = x
 			this.mouse.y = y
-			
-
-			
-			// TweenLite.to(this.lightTop.position,0.75,{
-			// 	x : (x*1000)-600,
-			// 	y : (y*1000)-100
-			// })
-
 		}
 	}
 
@@ -383,215 +337,6 @@ class App {
 		});
 	}
 
-	addGUI() {
-		this.gui = new dat.GUI();
-
-		this.params = {
-			postprocessing: {
-				enabled: true,
-				bloom: {
-					blendFunction: PP.BlendFunction.SCREEN,
-					resolutionScale: 1.0,
-					kernelSize: PP.KernelSize.LARGE,
-					distinction: 10,
-					dithering: false
-				},
-				chroma: {
-					offset: {
-						x: 0,
-						y: 0
-					}
-				},
-				SMAA: {
-					searchStep: 112,
-					edgeDetectionThreshold: 0.5
-				}
-			}
-		};
-
-		let pp = this.gui.addFolder("post-processing");
-		// pp.open();
-		pp.add(this, "isPostProcessingEnabled").name("enabled");
-
-		this.gui
-			.add(effectController, "mouseSize", 1.0, 100.0, 1.0)
-			.onChange(this.valuesChanger.bind(this));
-		this.gui
-			.add(effectController, "viscosity", 0.9, 0.999, 0.001)
-			.onChange(this.valuesChanger.bind(this));
-
-		//bloom
-		let bloom = pp.addFolder("bloom");
-		// bloom.open();
-
-		this.bloomEffect.setResolutionScale(
-			this.params.postprocessing.bloom.resolutionScale
-		);
-		bloom
-			.add(this.params.postprocessing.bloom, "resolutionScale", 0.01, 1)
-			.name("resolution")
-			.onChange(value => {
-				this.bloomEffect.setResolutionScale(value);
-			})
-			.listen();
-
-		bloom
-			.add(this.params.postprocessing.bloom, "kernelSize", PP.KernelSize)
-			.name("kernel size")
-			.onChange(value => {
-				this.bloomEffect.kernelSize = value;
-			});
-
-		let luminance = bloom.addFolder("Luminance");
-		// luminance.open();
-		this.bloomEffect.distinction = this.params.postprocessing.bloom.distinction;
-		luminance
-			.add(this.params.postprocessing.bloom, "distinction", 1, 10)
-			.name("distinction")
-			.onChange(value => {
-				this.bloomEffect.distinction = value;
-			})
-			.listen();
-
-		// bloom
-		// 	.add(this.params.postprocessing.bloom, "blendFunction", PP.BlendFunction)
-		// 	.name("blend mode")
-		// 	.onChange(value => {
-		// 		this.bloomEffect.blendMode.blendFunction = parseInt(value);
-		// 	});
-
-		bloom
-			.add(this.params.postprocessing.bloom, "dithering")
-			.name("dithering")
-			.onChange(value => {
-				this.bloomEffect.dithering = value;
-			});
-
-		let chroma = pp.addFolder("chromatic aberration");
-		// chroma.open()
-
-		let offset = chroma.addFolder("offset");
-		offset
-			.add(this.params.postprocessing.chroma.offset, "x", -0.01, 0.01)
-			.step(0.001)
-			.onChange(value => {
-				this.chromaticAberrationEffect.offset.x = value;
-			});
-
-		offset
-			.add(this.params.postprocessing.chroma.offset, "y", -0.01, 0.01)
-			.step(0.001)
-			.onChange(value => {
-				this.chromaticAberrationEffect.offset.y = value;
-			});
-
-		let SMAA = pp.addFolder("SMAA");
-		// SMAA.open()
-
-		SMAA.add(this.params.postprocessing.SMAA, "searchStep", 0, 112)
-			.name("search step")
-			.onChange(value => {
-				this.SMAAEffect.setOrthogonalSearchSteps(value);
-			});
-
-		SMAA.add(this.params.postprocessing.SMAA, "edgeDetectionThreshold", 0.05, 0.5)
-			.name("sensitivity")
-			.step(0.01)
-			.onChange(value => {
-				this.SMAAEffect.setEdgeDetectionThreshold(value);
-			});
-
-		this.gui
-			.add(this, "speedTime")
-			.min(0.01)
-			.max(3)
-			.step(0.001)
-			.name("speed time")
-			.listen();
-		this.gui
-			.add(this.blob.material.uniforms.uFrequency, "value")
-			.min(0.01)
-			.max(2)
-			.step(0.01)
-			.name("frequency")
-			.listen();
-		this.gui
-			.add(this.blob.material.uniforms.uAmplitude, "value")
-			.min(0)
-			.max(2)
-			.step(0.01)
-			.name("amplitude")
-			.listen();
-	}
-
-	load() {
-		const assets = new Map();
-		const loadingManager = new THREE.LoadingManager();
-
-		return new Promise((resolve, reject) => {
-			loadingManager.onError = reject;
-			loadingManager.onProgress = (item, loaded, total) => {
-				if (loaded === total) {
-					resolve(assets);
-				}
-			};
-
-			const searchImage = new Image();
-			const areaImage = new Image();
-
-			searchImage.addEventListener("load", function() {
-				assets.set("smaa-search", this);
-				loadingManager.itemEnd("smaa-search");
-			});
-
-			areaImage.addEventListener("load", function() {
-				assets.set("smaa-area", this);
-				loadingManager.itemEnd("smaa-area");
-			});
-
-			// Register the new image assets.
-			loadingManager.itemStart("smaa-search");
-			loadingManager.itemStart("smaa-area");
-
-			// Load the images asynchronously.
-			searchImage.src = PP.SMAAEffect.searchImageDataURL;
-			areaImage.src = PP.SMAAEffect.areaImageDataURL;
-		});
-	}
-
-	addPostProcessing(assets) {
-		// this.renderer = renderer;
-		this.composer = new PP.EffectComposer(this.renderer);
-
-		this.noiseEffect = new PP.NoiseEffect({ premultiply: true });
-		this.vignetteEffect = new PP.VignetteEffect();
-		this.bloomEffect = new PP.BloomEffect();
-
-		this.SMAAEffect = new PP.SMAAEffect(
-			assets.get("smaa-search"),
-			assets.get("smaa-area")
-		);
-		this.SMAAEffect.setOrthogonalSearchSteps(112);
-		this.SMAAEffect.setEdgeDetectionThreshold(0.5);
-		this.chromaticAberrationEffect = new PP.ChromaticAberrationEffect();
-
-		this.renderPass = new PP.RenderPass(this.scene, this.camera);
-		this.effectPass = new PP.EffectPass(this.camera, this.SMAAEffect);
-
-		this.effectPass2 = new PP.EffectPass(
-			this.chromaticAberrationEffect,
-			this.bloomEffect,
-			this.chromaticAberrationEffect
-		);
-
-		// this.noiseEffect.blendMode.opacity.value = 0.75;
-		this.effectPass2.renderToScreen = true;
-
-		this.composer.addPass(this.renderPass);
-		this.composer.addPass(this.effectPass);
-		this.composer.addPass(this.effectPass2);
-	}
-
 	onWindowResize() {
 		this.camera.aspect = window.innerWidth / window.innerHeight;
 		this.camera.updateProjectionMatrix();
@@ -604,7 +349,7 @@ Number.prototype.map = function(in_min, in_max, out_min, out_max) {
 	return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 };
 
-const PP = POSTPROCESSING;
+// const PP = POSTPROCESSING;
 
 const simplex = new SimplexNoise();
 
