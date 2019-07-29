@@ -9,15 +9,11 @@ main {
 }
 
 
-
-
 *,
 :after,
 :before {
     box-sizing: inherit
 }
-
-
 
 
 html:not(.has-scroll-init) {
@@ -174,33 +170,9 @@ html.is-ready .o-layout_item:nth-child(2) .c-header_heading_label {
     transition-delay: .1s
 }
 
-html.is-ready .c-header_logo {
-    transform: none;
-    opacity: 1;
-    transition-delay: .6s;
-    transition-duration: .6s
-}
-
 
 html:not(.has-scroll-smooth) .c-fixed {
     top: 0
-}
-
-.c-section {
-    position: relative
-}
-
-@media (max-width:1199px) {
-    .c-section {
-        padding-bottom: 10vh;
-        margin-bottom: 10vh
-    }
-}
-
-@media (min-width:1200px) {
-    .c-section {
-        margin-bottom: 35vh
-    }
 }
 
 
@@ -220,33 +192,3 @@ html[data-direction=up] .c-choochoo_item.-reverse span {
     clip: auto
 }
 
-.u-screen-reader-text {
-    position: absolute !important;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    margin: 0;
-    padding: 0;
-    width: 1px;
-    height: 1px;
-    border: 0
-}
-
-@media not print {
-    .u-screen-reader-text\@screen {
-        position: absolute !important;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        margin: 0;
-        padding: 0;
-        width: 1px;
-        height: 1px;
-        border: 0
-    }
-}
-
-.u-screen-reader-text.-focusable:active,
-.u-screen-reader-text.-focusable:focus {
-    clip: auto;
-    width: auto;
-    height: auto
-}
