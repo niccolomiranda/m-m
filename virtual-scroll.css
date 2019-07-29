@@ -41,27 +41,6 @@ html.has-scroll-dragging {
 }
 
 
-.o-h3,
-h3 {
-    font-size: 1.5rem
-}
-
-.o-h4,
-h4 {
-    line-height: 1.2
-}
-
-.o-h4,
-.o-h5,
-h4,
-h5 {
-    font-size: 1rem
-}
-
-.o-h6,
-h6 {
-    font-size: .9375rem
-}
 
 .o-container {
     margin-right: auto;
@@ -83,115 +62,8 @@ h6 {
     }
 }
 
-.o-ratio {
-    position: relative;
-    display: block;
-    overflow: hidden
-}
 
-.o-ratio:before {
-    display: block;
-    padding-bottom: 100%;
-    width: 100%;
-    content: ""
-}
 
-.o-ratio>embed,
-.o-ratio>iframe,
-.o-ratio>img,
-.o-ratio>object,
-.o-ratio_content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%
-}
-
-.o-layout {
-    padding: 0;
-    list-style: none;
-    font-size: 0;
-    margin: 0
-}
-
-.o-layout.-gutter {
-    margin-left: -3.75rem
-}
-
-.o-layout.-gutter-small {
-    margin-left: -1.875rem
-}
-
-.o-layout.-center {
-    text-align: center
-}
-
-.o-layout.-right {
-    text-align: right
-}
-
-.o-layout.-reverse {
-    direction: rtl
-}
-
-.o-layout.-reverse.-flex {
-    flex-direction: row-reverse
-}
-
-.o-layout.-flex {
-    display: flex
-}
-
-.o-layout.-flex.-top {
-    align-items: flex-start
-}
-
-.o-layout.-flex.-middle {
-    align-items: center
-}
-
-.o-layout.-flex.-bottom {
-    align-items: flex-end
-}
-
-.o-layout.-stretch {
-    align-items: stretch
-}
-
-.o-layout_item {
-    display: inline-block;
-    width: 100%;
-    vertical-align: top;
-    font-size: 1rem;
-    padding-left: 0
-}
-
-.o-layout.-gutter>.o-layout_item {
-    padding-left: 3.75rem
-}
-
-.o-layout.-gutter-small>.o-layout_item {
-    padding-left: 1.875rem
-}
-
-.o-layout.-middle>.o-layout_item {
-    vertical-align: middle
-}
-
-.o-layout.-bottom>.o-layout_item {
-    vertical-align: bottom
-}
-
-.o-layout.-center>.o-layout_item,
-.o-layout.-reverse>.o-layout_item,
-.o-layout.-right>.o-layout_item {
-    text-align: left
-}
-
-.o-layout.-reverse>.o-layout_item {
-    direction: ltr
-}
 
 .o-checkbox-label,
 .o-label,
