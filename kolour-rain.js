@@ -221,7 +221,7 @@ class Asset {
 
 const assets = [
     "https://uploads-ssl.webflow.com/5b67e2c8dc6fa8e26712d6d5/5d933012e2f2d30f9a11b367_ass3.svg",
-    "https://uploads-ssl.webflow.com/5b67e2c8dc6fa8e26712d6d5/5d932f58e2a4d96874b1f124_ass11.svg",
+    "https://uploads-ssl.webflow.com/5b67e2c8dc6fa8e26712d6d5/5d9358021d15370ab2b3e99c_ass11.svg",
     "https://uploads-ssl.webflow.com/5b67e2c8dc6fa8e26712d6d5/5d932c7d67afa8599ad186fa_ass5.svg",
     "https://uploads-ssl.webflow.com/5b67e2c8dc6fa8e26712d6d5/5d932c78e2f2d377b0117e0c_ass2.svg"
 
