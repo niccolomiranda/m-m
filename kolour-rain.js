@@ -66,6 +66,7 @@ class AppRain extends PIXI.Application {
     canvasElement.id = "canvas";
     document.body.appendChild(canvasElement);
     canvasElement.appendChild(this.view);
+    canvasElement.classList.add("rain");
     this.resizeTo = canvasElement;
     this.time = 0;
     this.ticker.add(delta => {
